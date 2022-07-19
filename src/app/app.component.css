@@ -1,0 +1,11 @@
+p {
+  font-family: Lato;
+}
+
+.demo-chart {
+  z-index: 9999;
+}
+
+.demo-chart-2 {
+  margin-top: -400px;
+}
