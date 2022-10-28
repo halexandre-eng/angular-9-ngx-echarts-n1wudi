@@ -3,96 +3,259 @@ import { Component, VERSION, OnInit } from '@angular/core';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   options: any;
   options2: any;
 
   ngOnInit(): void {
-
     this.options = {
-      xAxis: {
-        splitLine: {
-          show: false
-        }
+      legend: {},
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow',
+        },
       },
-      yAxis: {
-        splitLine: {
-          show: false
-        }
-      },
-      series: [
+      xAxis: [
         {
-          symbolSize: 20,
+          type: 'category',
+          gridIndex: 0,
           data: [
-            [10.0, 8.04],
-            [8.07, 6.95],
-            [13.0, 7.58],
-            [9.05, 8.81],
-            [11.0, 8.33],
-            [14.0, 7.66],
-            [13.4, 6.81],
-            [10.0, 6.33],
-            [14.0, 8.96],
-            [12.5, 6.82],
-            [9.15, 7.2],
-            [11.5, 7.2],
-            [3.03, 4.23],
-            [12.2, 7.83],
-            [2.02, 4.47],
-            [1.05, 3.33],
-            [4.05, 4.96],
-            [6.03, 7.24],
-            [12.0, 6.26],
-            [12.0, 8.84],
-            [7.08, 5.82],
-            [5.02, 5.68]
+            '202101',
+            '202102',
+            '202103',
+            '202104',
+            '202105',
+            '202106',
+            '202107',
           ],
-          type: 'scatter'
-        }
-      ]
-    };
-
-    this.options2 = {
-      
-      xAxis: {
-        show: false,
-        type: 'category',
-        boundaryGap: false,
-        data: [0, 15],
-        splitLine: {
-          show: false
-        }
-      },
-      yAxis: {
-        max: 10,
-        show: false,
-        type: 'value',
-        splitLine: {
-          show: false
-        }
-      },
-      series: [
-        {
-          color: '#B1D8B7',
-          showSymbol: false,
-          stack: 'Total',
-          data: [0, 8],
-          type: 'line',
-          areaStyle: {}
         },
         {
-          color: '#05445E',
-          showSymbol: false,
-          stack: 'Total',
-          data: [0, 2],
+          type: 'category',
+          gridIndex: 1,
+          data: ['Média AGP 21', 'Média AGP 22'],
+        },
+        {
+          type: 'category',
+          gridIndex: 2,
+          data: ['Média ExAgro 22', 'Média ExAgro 2022'],
+        },
+      ],
+      yAxis: [
+        { gridIndex: 0, show: false },
+        { gridIndex: 1, show: false },
+        { gridIndex: 2, show: false, min: 1320 },
+      ],
+      grid: [{ right: '50%' }, { left: '70%', right: '45%' }, { left: '75%' }],
+      series: [
+        // These series are in the first grid.
+        {
+          name: 'CSC',
+          type: 'bar',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [320, 332, 301, 334, 390, 330, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N1',
+          type: 'bar',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [120, 132, 101, 134, 90, 230, 210],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N2',
+          type: 'bar',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [220, 182, 191, 234, 290, 330, 310],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N3',
+          type: 'bar',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [220, 182, 191, 234, 290, 330, 310],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N4',
+          type: 'bar',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [220, 182, 191, 234, 290, 330, 310],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'Total',
           type: 'line',
-          areaStyle: {}
-        }
-      ]
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          stack: 'atuacao',
+          data: [220, 182, 191, 234, 290, 330, 310],
+          label: {
+            show: true,
+          },
+        },
+        // These series are in the second grid.
+        {
+          name: 'CSC',
+          type: 'bar',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N1',
+          type: 'bar',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N2',
+          type: 'bar',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N3',
+          type: 'bar',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N4',
+          type: 'bar',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'Total',
+          type: 'line',
+          xAxisIndex: 1,
+          yAxisIndex: 1,
+          stack: 'media',
+          data: [220, 220],
+          label: {
+            show: true,
+          },
+        },
+
+        // These series are in the third grid.
+        {
+          name: 'CSC',
+          type: 'bar',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N1',
+          type: 'bar',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N2',
+          type: 'bar',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N3',
+          type: 'bar',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'N4',
+          type: 'bar',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+        {
+          name: 'Total',
+          type: 'line',
+          xAxisIndex: 2,
+          yAxisIndex: 2,
+          stack: 'media',
+          data: [320, 320],
+          label: {
+            show: true,
+          },
+        },
+      ],
     };
 
+    this.options2 = {};
   }
 }
