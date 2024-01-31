@@ -19,3 +19,22 @@ df = pd.DataFrame([dados], columns=["Código", "Instituição Financeira", "Tipo
 
 # Exibir o DataFrame
 print(df)
+
+
+
+
+import pandas as pd
+import re
+
+# Seu texto
+texto = "02053-2$&BCO SANTANDER (BRASIL): S.A.$&DFP - Demonstrações Financeiras Padronizadas$& - $&<spanOrder>...</i>"
+
+# Extrair dados usando expressões regulares
+padrao = re.compile(r'(\d{5}-\d)(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&(.*?)\$\&')
+dados = padrao.search(texto).groups()
+
+# Criar um DataFrame
+df = pd.DataFrame([dados], columns=["Código", "Instituição Financeira", "Tipo Documento", "Data de Referência", "Data de Publicação", "Hora", "Categoria", "Página", "Visualizar Documento", "Download", "Informação", "Protocolo de Entrega"])
+
+# Exibir o DataFrame
+print(df)
